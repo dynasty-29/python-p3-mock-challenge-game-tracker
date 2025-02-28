@@ -26,17 +26,17 @@ class TestResults:
         assert isinstance(result_1.score, int)
 
         # comment out the next three lines if using Exceptions
-        result_1.score = 5000
+        # result_1.score = 5000
         assert result_1.score == 2000
         assert isinstance(result_1.score, int)
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Result(player, game, "500")
+        with pytest.raises(Exception):
+            Result(player, game, "500")
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Result(player, game, 400.99)
+        with pytest.raises(Exception):
+            Result(player, game, 400.99)
 
     def test_score_is_valid(self):
         """score is between 1 and 5000 inclusive"""
@@ -47,12 +47,12 @@ class TestResults:
         assert 1 <= result.score <= 5000
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     result.score = 5001
+        with pytest.raises(Exception):
+            result.score = 5001
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     result.score = 0
+        with pytest.raises(Exception):
+            result.score = 0
 
     def test_has_a_player(self):
         """result has a player"""
@@ -100,13 +100,13 @@ class TestResults:
 
     def test_get_all_results(self):
         """Result class has all attribute"""
-        Result.all = []
+        Result.all_results = []
         game = Game("Codenames")
         player_1 = Player("Ja'Vonn")
         player_2 = Player("Brett")
         result_1 = Result(player_1, game, 2)
         result_2 = Result(player_2, game, 5)
 
-        assert len(Result.all) == 2
-        assert result_1 in Result.all
-        assert result_2 in Result.all
+        assert len(Result.all_results) == 2
+        assert result_1 in Result.all_results
+        assert result_2 in Result.all_results
